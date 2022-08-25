@@ -6,7 +6,7 @@ function App() {
 
   const [movieName, setMovieName] = useState('');
   const [review, setReview] = useState('');
-  const [movieList, setMovieList] = useState([])
+  const [movieList, setMovieList] = useState([]);
 
 
   useEffect(()=> {
@@ -36,8 +36,11 @@ function App() {
         <input type="text" name="review" onChange={(e)=> {
           setReview(e.target.value) }} />
         <button onClick={submitReview}>Submit</button>
-        
 
+        {movieList.map((value, key)=> {
+          return <h2 key={key}> Movie Name: {value.movie_name} || Movie Review: {value.review} </h2>
+        })}
+       
       </div>
     </div>
   );

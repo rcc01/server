@@ -24,7 +24,8 @@
  app.get("/api/get", (req, res)=> {
   const sqlSelect = "SELECT * FROM movie_reviews;"
   db.query(sqlSelect, (err, result)=> {
-    res.send(err);
+    // is this really an array or an object? to see it, change res.send to console.log and check server with node index.js
+   res.send(result);
   })
  })
 
@@ -35,7 +36,7 @@
   const sqlInsert = "INSERT INTO movie_reviews (movie_name, review) VALUES (?,?)";
 
   db.query(sqlInsert, [movieName, review], (err, result)=> {
-    console.log(err);
+    console.log(result);
   })
  })
 
