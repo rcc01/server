@@ -8,12 +8,14 @@ function App() {
   const [review, setReview] = useState('');
   const [movieList, setMovieList] = useState([]);
 
-
+  // GET
   useEffect(()=> {
     Axios.get("http://localhost:3001/api/get").then((response) => {
       setMovieList(response.data)
     })
   }, [])
+
+
 
   const submitReview = () => {
     // API server;  
@@ -40,7 +42,6 @@ function App() {
         {movieList.map((value, key)=> {
           return <h2 key={key}> Movie Name: {value.movie_name} || Movie Review: {value.review} </h2>
         })}
-       
       </div>
     </div>
   );

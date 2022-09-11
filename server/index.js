@@ -4,13 +4,14 @@
  const app = express()
  const mysql = require('mysql')
 
+ // instead of connecting to DB, we need it to connect to our API!
+
  const db = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: "Madriles@2022",
+  password: "pollas",
   database: "CRUDDatabase"
  })
-
 
 
 
@@ -24,8 +25,8 @@
  app.get("/api/get", (req, res)=> {
   const sqlSelect = "SELECT * FROM movie_reviews;"
   db.query(sqlSelect, (err, result)=> {
-    // is this really an array or an object? to see it, change res.send to console.log and check server with node index.js
-   res.send(result);
+    // is this really an array or an object? to check it, change res.send to console.log and check server with node index.js
+   console.log(result);
   })
  })
 
@@ -36,7 +37,7 @@
   const sqlInsert = "INSERT INTO movie_reviews (movie_name, review) VALUES (?,?)";
 
   db.query(sqlInsert, [movieName, review], (err, result)=> {
-    console.log(result);
+    console.log(err);
   })
  })
 
